@@ -40,7 +40,8 @@ const PortalSelection = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-display font-medium"
+            onClick={() => navigate('/adminlogin')}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-display font-medium cursor-pointer hover:bg-primary/20 transition-all select-none"
           >
             <Sparkles size={14} /> Academic Gateways
           </motion.div>
