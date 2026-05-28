@@ -47,44 +47,6 @@ EduTrack AI uses PostgreSQL in Supabase. The database contains the following tab
 *Note: Database triggers automatically create a profile on new user signup and handle `updated_at` timestamps.*
 
 ---
-
-## 🛠️ Environment Configuration
-
-To run the application, create a `.env` file in the root directory. Copy the structure below and replace the placeholders with your own configuration credentials. 
-
-> [!WARNING]
-> Keep your `.env` file private. Never commit it to version control. It is ignored by Git in this project via `.gitignore`.
-
-```env
-# --- Server Configuration ---
-PORT=5000
-NODE_ENV=development
-CLIENT_URL=http://localhost:5173
-
-# --- Supabase Keys (Backend Server) ---
-SUPABASE_URL=your_supabase_project_url
-SUPABASE_ANON_KEY=your_supabase_anon_public_key
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_secret_key
-
-# --- Cloudinary Credentials (Optional - File Uploads) ---
-CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-
-# --- SMTP Credentials (Optional - Email Alerts) ---
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your_smtp_email_username@gmail.com
-SMTP_PASS=your_smtp_application_password
-FROM_EMAIL=noreply@yourdomain.com
-
-# --- Client Configuration (Vite Frontend) ---
-VITE_SUPABASE_URL=your_supabase_project_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_public_key
-```
-
----
-
 ## 🚀 Setup & Installation
 
 ### 1. Prerequisites
@@ -116,16 +78,6 @@ npm run dev
 ```
 *   **Vite Frontend**: http://localhost:5173
 *   **Express Server**: http://localhost:5000
-
----
-
-## 🔑 Demo Credentials
-
-Once the seeding script has been executed successfully, you can log in with the following default accounts:
-
-*   **Admin**: `admin@edutrack.com` / `Admin@123`
-*   **Faculty**: `faculty1@edutrack.com` / `Faculty@123`
-*   **Student**: `student1@edutrack.com` / `Student@123`
 
 ---
 
