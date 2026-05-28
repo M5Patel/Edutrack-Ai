@@ -48,9 +48,10 @@ const PORTAL_CONFIGS = {
   }
 }
 
-const Login = () => {
+const Login = ({ adminMode }) => {
   const { portalRole } = useParams()
-  const config = PORTAL_CONFIGS[portalRole]
+  const role = adminMode ? 'admin' : portalRole
+  const config = PORTAL_CONFIGS[role]
   const navigate = useNavigate()
 
   const [showPwd, setShowPwd] = useState(false)
@@ -59,14 +60,14 @@ const Login = () => {
 
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(schema) })
 
-  // Redirect to central selection gate if invalid portal path
+  // Redirect to central selection gate if invalid portal path or trying to access admin login directly
   useEffect(() => {
-    if (!config) {
+    if (!config || (role === 'admin' && !adminMode)) {
       navigate('/login')
     }
-  }, [config, navigate])
+  }, [config, role, adminMode, navigate])
 
-  if (!config) return null
+  if (!config || (role === 'admin' && !adminMode)) return null
 
   const onSubmit = async (data) => {
     setLoading(true)

@@ -43,6 +43,8 @@ const queryClient = new QueryClient({
   }
 })
 
+const ADMIN_LOGIN_PATH = import.meta.env.VITE_ADMIN_LOGIN_PATH || '/portal-mgmt'
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider>
@@ -54,6 +56,7 @@ const App = () => (
                 {/* Public */}
                 <Route path="/login" element={<PortalSelection />} />
                 <Route path="/login/:portalRole" element={<Login />} />
+                <Route path={ADMIN_LOGIN_PATH} element={<Login adminMode={true} />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/unauthorized" element={<Unauthorized />} />
 
