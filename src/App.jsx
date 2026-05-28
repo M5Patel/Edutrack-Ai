@@ -55,6 +55,7 @@ const App = () => (
                 <Route path="/login" element={<PortalSelection />} />
                 <Route path="/login/:portalRole" element={<Login />} />
                 <Route path="/adminlogin" element={<Login adminMode={true} />} />
+                <Route path="/admin-login" element={<Login adminMode={true} />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/unauthorized" element={<Unauthorized />} />
 
