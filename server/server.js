@@ -16,9 +16,14 @@ import analyticsRoutes from './routes/analyticsRoutes.js'
 import notificationRoutes from './routes/notificationRoutes.js'
 import auditRoutes from './routes/auditRoutes.js'
 import { startCronJobs } from './services/cronService.js'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 const app = express()
 const httpServer = createServer(app)
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 // Initialize Socket.io
 const io = initSocket(httpServer)
@@ -51,6 +56,18 @@ app.use('/api/audit', auditRoutes)
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'EduTrack AI API is running (Supabase)' })
 })
+
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+  const distPath = path.join(__dirname, '../dist')
+  app.use(express.static(distPath))
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api/')) {
+      return next()
+    }
+    res.sendFile(path.resolve(distPath, 'index.html'))
+  })
+}
 
 // Error handling
 app.use(notFound)
