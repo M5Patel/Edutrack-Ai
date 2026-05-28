@@ -1,6 +1,11 @@
 {
   "name": "edutrack-ai",
   "version": "1.0.0",
+  "type": "module",
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "description": "Smart Daily Work Submission & Tracking System for Educational Institutes",
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
